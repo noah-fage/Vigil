@@ -7,15 +7,18 @@ export default function Header() {
     <Link
       to={to}
       style={{
-        color: pathname === to ? '#f59e0b' : '#a89880',
-        fontSize: '13px',
-        fontWeight: pathname === to ? 600 : 400,
-        letterSpacing: '0.05em',
+        color: pathname === to ? '#00ff41' : '#1f4d1f',
+        fontSize: '12px',
+        fontWeight: pathname === to ? 700 : 400,
+        letterSpacing: '0.12em',
         textDecoration: 'none',
         padding: '6px 12px',
-        borderRadius: '6px',
-        background: pathname === to ? '#f59e0b10' : 'transparent',
+        borderRadius: '4px',
+        background: pathname === to ? '#00ff4110' : 'transparent',
+        border: `1px solid ${pathname === to ? '#00ff4130' : 'transparent'}`,
         transition: 'all 0.15s',
+        fontFamily: 'var(--font-mono)',
+        textTransform: 'uppercase' as const,
       }}
     >
       {label}
@@ -25,9 +28,9 @@ export default function Header() {
   return (
     <header
       style={{
-        borderBottom: '1px solid #2a2520',
-        background: '#0d0c0bcc',
-        backdropFilter: 'blur(12px)',
+        borderBottom: '1px solid #0d2410',
+        background: '#020b02ee',
+        backdropFilter: 'blur(8px)',
         position: 'sticky',
         top: 0,
         zIndex: 100,
@@ -44,61 +47,61 @@ export default function Header() {
           justifyContent: 'space-between',
         }}
       >
-        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12 }}>
-          <div
-            style={{
-              width: 28,
-              height: 28,
-              position: 'relative',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-              <polygon
-                points="13,2 24,20 2,20"
-                stroke="#f59e0b"
-                strokeWidth="1.5"
-                fill="#f59e0b10"
-              />
-              <circle cx="13" cy="14" r="2.5" fill="#f59e0b" />
-            </svg>
-          </div>
+        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 14 }}>
           <div>
-            <div
-              style={{
-                fontWeight: 900,
-                fontSize: 17,
-                letterSpacing: '0.25em',
-                color: '#f0ece6',
-                lineHeight: 1,
-              }}
-            >
-              VIGIL
+            <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
+              <span
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 900,
+                  fontSize: 20,
+                  letterSpacing: '0.3em',
+                  color: '#00ff41',
+                  textShadow: '0 0 20px #00ff4180',
+                  lineHeight: 1,
+                }}
+              >
+                VIGIL
+              </span>
+              <span
+                style={{
+                  display: 'inline-block',
+                  width: 10,
+                  height: 18,
+                  background: '#00ff41',
+                  marginLeft: 3,
+                  animation: 'blink 1s step-end infinite',
+                  boxShadow: '0 0 8px #00ff41',
+                  verticalAlign: 'middle',
+                }}
+              />
             </div>
-            <div style={{ fontSize: 9, color: '#5c5248', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-              Intelligence Brief
+            <div style={{ fontSize: 9, color: '#1f4d1f', letterSpacing: '0.15em', fontFamily: 'var(--font-mono)', marginTop: 2 }}>
+              // SECURITY INTELLIGENCE FEED
             </div>
           </div>
         </Link>
 
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+        <nav style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           {navLink('/', 'Today')}
           {navLink('/archive', 'Archive')}
           <a
             href="#subscribe"
             style={{
-              marginLeft: 8,
+              marginLeft: 4,
               padding: '6px 14px',
-              background: '#f59e0b15',
-              border: '1px solid #f59e0b40',
-              borderRadius: '6px',
-              color: '#f59e0b',
-              fontSize: '13px',
-              fontWeight: 600,
+              background: 'transparent',
+              border: '1px solid #00ff4150',
+              borderRadius: '4px',
+              color: '#00ff41',
+              fontSize: '11px',
+              fontWeight: 700,
               textDecoration: 'none',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase' as const,
+              fontFamily: 'var(--font-mono)',
               transition: 'all 0.15s',
+              textShadow: '0 0 8px #00ff4160',
             }}
           >
             Subscribe

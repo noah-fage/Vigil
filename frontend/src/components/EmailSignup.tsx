@@ -25,63 +25,73 @@ export default function EmailSignup() {
     <section
       id="subscribe"
       style={{
-        background: 'linear-gradient(135deg, #151311 0%, #1a1714 100%)',
-        border: '1px solid #2a2520',
-        borderRadius: 14,
+        background: '#060f06',
+        border: '1px solid #0d2410',
+        borderRadius: 6,
         padding: '40px 32px',
         textAlign: 'center',
+        fontFamily: 'var(--font-mono)',
       }}
     >
-      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: '#f59e0b10', border: '1px solid #f59e0b30', borderRadius: 20, padding: '4px 14px', marginBottom: 20 }}>
-        <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
-        <span style={{ color: '#f59e0b', fontSize: 11, fontWeight: 600, letterSpacing: '0.08em' }}>FREE DAILY BRIEF</span>
+      <div style={{ color: '#1f4d1f', fontSize: 11, letterSpacing: '0.15em', marginBottom: 16 }}>
+        // FREE DAILY INTELLIGENCE FEED
       </div>
 
-      <h2 style={{ fontSize: 26, fontWeight: 800, color: '#f0ece6', marginBottom: 10, letterSpacing: '-0.02em' }}>
-        Stay ahead of the threat.
+      <h2 style={{ fontSize: 22, fontWeight: 900, color: '#00ff41', marginBottom: 10, letterSpacing: '0.1em', textShadow: '0 0 20px #00ff4160' }}>
+        STAY AHEAD OF THE THREAT
       </h2>
-      <p style={{ color: '#5c5248', fontSize: 14, marginBottom: 28, maxWidth: 460, margin: '0 auto 28px' }}>
-        CVEs, threat intel, and breach reports delivered every morning at 8am ET - mapped to Security+ exam objectives.
+      <p style={{ color: '#4d994d', fontSize: 13, marginBottom: 28, maxWidth: 460, margin: '0 auto 28px', lineHeight: 1.7 }}>
+        CVEs, threat intel, and breach reports — delivered 08:00 ET daily.<br />
+        Mapped to Security+ SY0-701 exam objectives.
       </p>
 
       {status === 'success' ? (
-        <div style={{ background: '#22c55e10', border: '1px solid #22c55e30', borderRadius: 8, padding: '14px 20px', color: '#22c55e', fontSize: 14, fontWeight: 500, maxWidth: 400, margin: '0 auto' }}>
+        <div style={{ background: '#00ff4110', border: '1px solid #00ff4130', borderRadius: 4, padding: '14px 20px', color: '#00ff41', fontSize: 13, maxWidth: 400, margin: '0 auto' }}>
           {message}
         </div>
       ) : (
-        <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 10, maxWidth: 420, margin: '0 auto', flexWrap: 'wrap' as const, justifyContent: 'center' }}>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 8, maxWidth: 420, margin: '0 auto', flexWrap: 'wrap' as const, justifyContent: 'center' }}>
           <input
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            placeholder="your@email.com"
+            placeholder="user@domain.com"
             required
             style={{
               flex: 1, minWidth: 220,
-              background: '#0d0c0b',
-              border: `1px solid ${status === 'error' ? '#ef444460' : '#2a2520'}`,
-              borderRadius: 8, padding: '11px 16px',
-              color: '#f0ece6', fontSize: 14, outline: 'none', fontFamily: 'inherit',
+              background: '#020b02',
+              border: `1px solid ${status === 'error' ? '#ff444460' : '#0d2410'}`,
+              borderRadius: 4, padding: '10px 14px',
+              color: '#00ff41', fontSize: 13, outline: 'none',
+              fontFamily: 'var(--font-mono)',
+              caretColor: '#00ff41',
             }}
           />
           <button
             type="submit"
             disabled={status === 'loading'}
             style={{
-              background: status === 'loading' ? '#2a2520' : '#f59e0b',
-              color: status === 'loading' ? '#5c5248' : '#0d0c0b',
-              border: 'none', borderRadius: 8, padding: '11px 24px',
-              fontSize: 14, fontWeight: 700, cursor: status === 'loading' ? 'not-allowed' : 'pointer',
-              fontFamily: 'inherit', transition: 'all 0.15s', whiteSpace: 'nowrap' as const,
+              background: status === 'loading' ? '#0a160a' : '#00ff4120',
+              color: status === 'loading' ? '#1f4d1f' : '#00ff41',
+              border: `1px solid ${status === 'loading' ? '#0d2410' : '#00ff4150'}`,
+              borderRadius: 4, padding: '10px 20px',
+              fontSize: 12, fontWeight: 700,
+              cursor: status === 'loading' ? 'not-allowed' : 'pointer',
+              fontFamily: 'var(--font-mono)',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase' as const,
+              transition: 'all 0.15s',
+              textShadow: status === 'loading' ? 'none' : '0 0 8px #00ff4160',
+              whiteSpace: 'nowrap' as const,
             }}
           >
-            {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
+            {status === 'loading' ? 'PROCESSING...' : 'SUBSCRIBE'}
           </button>
         </form>
       )}
 
-      {status === 'error' && <div style={{ color: '#ef4444', fontSize: 12, marginTop: 10 }}>{message}</div>}
-      <p style={{ color: '#2a2520', fontSize: 11, marginTop: 16 }}>No spam. Unsubscribe anytime.</p>
+      {status === 'error' && <div style={{ color: '#ff4444', fontSize: 11, marginTop: 10, fontFamily: 'var(--font-mono)' }}>ERROR: {message}</div>}
+      <div style={{ color: '#0d2410', fontSize: 10, marginTop: 16, letterSpacing: '0.1em' }}>// NO_SPAM. UNSUBSCRIBE_ANYTIME.</div>
     </section>
   )
 }

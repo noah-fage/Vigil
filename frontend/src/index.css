@@ -5,21 +5,21 @@
 }
 
 :root {
-  --bg: #0d0c0b;
-  --bg-card: #151311;
-  --bg-card-hover: #1a1815;
-  --bg-elevated: #1a1815;
-  --border: #2a2520;
-  --border-light: #35302a;
-  --accent: #f59e0b;
-  --accent-orange: #fb923c;
-  --text-primary: #f0ece6;
-  --text-secondary: #a89880;
-  --text-muted: #5c5248;
-  --critical: #ef4444;
-  --high: #f97316;
-  --medium: #eab308;
-  --low: #22c55e;
+  --bg: #020b02;
+  --bg-card: #060f06;
+  --bg-card-hover: #0a160a;
+  --bg-elevated: #0a160a;
+  --border: #0d2410;
+  --border-light: #163020;
+  --accent: #00ff41;
+  --accent-dim: #00cc33;
+  --text-primary: #b3ffb3;
+  --text-secondary: #4d994d;
+  --text-muted: #1f4d1f;
+  --critical: #ff4444;
+  --high: #ff8800;
+  --medium: #ffdd00;
+  --low: #00ff41;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
@@ -30,9 +30,30 @@ html {
 body {
   background: var(--bg);
   color: var(--text-primary);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Inter', monospace;
   line-height: 1.6;
   min-height: 100vh;
+}
+
+/* Matrix scanline effect */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 65, 0.015) 2px,
+    rgba(0, 255, 65, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 #root {
