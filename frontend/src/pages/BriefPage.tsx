@@ -32,14 +32,14 @@ export default function BriefPage() {
           display: 'inline-flex',
           alignItems: 'center',
           gap: 6,
-          color: '#475569',
+          color: '#5c5248',
           fontSize: 13,
           textDecoration: 'none',
           marginBottom: 28,
           transition: 'color 0.15s',
         }}
-        onMouseEnter={e => (e.currentTarget.style.color = '#94a3b8')}
-        onMouseLeave={e => (e.currentTarget.style.color = '#475569')}
+        onMouseEnter={e => (e.currentTarget.style.color = '#a89880')}
+        onMouseLeave={e => (e.currentTarget.style.color = '#5c5248')}
       >
         ← Archive
       </Link>
@@ -49,7 +49,7 @@ export default function BriefPage() {
           {[80, 120, 300, 350].map((h, i) => (
             <div
               key={i}
-              style={{ height: h, background: '#0c1220', borderRadius: 10, border: '1px solid #1a2744', opacity: 0.5 }}
+              style={{ height: h, background: '#151311', borderRadius: 10, border: '1px solid #2a2520', opacity: 0.5 }}
             />
           ))}
         </div>
@@ -58,12 +58,12 @@ export default function BriefPage() {
       {error && (
         <div
           style={{
-            background: '#0c1220',
-            border: '1px solid #1a2744',
+            background: '#151311',
+            border: '1px solid #2a2520',
             borderRadius: 12,
             padding: '40px 24px',
             textAlign: 'center',
-            color: '#475569',
+            color: '#5c5248',
           }}
         >
           Brief not found for {date}.
@@ -79,16 +79,16 @@ export default function BriefPage() {
           />
           <div
             style={{
-              background: '#0c1220',
-              border: '1px solid #1a2744',
+              background: '#151311',
+              border: '1px solid #2a2520',
               borderRadius: 10,
               padding: '20px 24px',
             }}
           >
-            <div style={{ fontSize: 10, color: '#475569', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 10 }}>
+            <div style={{ fontSize: 10, color: '#5c5248', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 10 }}>
               Overview
             </div>
-            <p style={{ color: '#94a3b8', fontSize: 14, lineHeight: 1.8 }}>{brief.summary}</p>
+            <p style={{ color: '#a89880', fontSize: 14, lineHeight: 1.8 }}>{brief.summary}</p>
           </div>
           <CVESection cves={brief.cves} />
           <ThreatIntelSection items={brief.threat_intel} />
