@@ -16,19 +16,37 @@ export default function Home() {
 
   useEffect(() => {
     getTodayBrief()
-      .then(data => { setBrief(data.content); setDate(data.date) })
+      .then(data => {
+        setBrief(data.content)
+        setDate(data.date)
+      })
       .catch(err => setError(err.message))
       .finally(() => setLoading(false))
   }, [])
 
-  const container = { maxWidth: 820, margin: '0 auto', padding: '40px 24px 80px' }
+  const containerStyle = {
+    maxWidth: 820,
+    margin: '0 auto',
+    padding: '40px 24px 80px',
+  }
 
   if (loading) {
     return (
-      <div style={container}>
-        <div style={{ fontFamily: 'var(--font-mono)', color: '#1f4d1f', fontSize: 12 }}>
-          <div style={{ marginBottom: 8 }}>$ vigil --fetch-today</div>
-          <div style={{ animation: 'blink 1s step-end infinite' }}>fetching intelligence feed...</div>
+      <div style={containerStyle}>
+        <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
+          {[200, 400, 300, 350].map((w, i) => (
+            <div
+              key={i}
+              style={{
+                height: i === 0 ? 80 : 120,
+                background: '#0c1220',
+                borderRadius: 10,
+                border: '1px solid #1a2744',
+                animation: 'fadeIn 0.3s ease',
+                opacity: 0.5,
+              }}
+            />
+          ))}
         </div>
       </div>
     )
@@ -36,13 +54,27 @@ export default function Home() {
 
   if (error) {
     return (
-      <div style={container}>
-        <div style={{ background: '#060f06', border: '1px solid #0d2410', borderRadius: 6, padding: '48px 32px', textAlign: 'center', fontFamily: 'var(--font-mono)' }}>
-          <div style={{ color: '#1f4d1f', fontSize: 11, marginBottom: 16 }}>$ vigil --status</div>
-          <div style={{ color: '#00ff41', fontSize: 16, fontWeight: 700, marginBottom: 8, textShadow: '0 0 10px #00ff4160' }}>NO_BRIEF_AVAILABLE</div>
-          <div style={{ color: '#4d994d', fontSize: 13, marginBottom: 8 }}>Today's brief hasn't been generated yet.</div>
-          <div style={{ color: '#1f4d1f', fontSize: 11 }}>SCHEDULED: 08:00 ET DAILY</div>
-          <div style={{ marginTop: 40, borderTop: '1px solid #0d2410', paddingTop: 40 }}>
+      <div style={containerStyle}>
+        <div
+          style={{
+            background: '#0c1220',
+            border: '1px solid #1a2744',
+            borderRadius: 12,
+            padding: '48px 32px',
+            textAlign: 'center',
+          }}
+        >
+          <div style={{ fontSize: 32, marginBottom: 16 }}>🛰️</div>
+          <div style={{ color: '#e2e8f0', fontSize: 18, fontWeight: 600, marginBottom: 8 }}>
+            No Brief Yet Today
+          </div>
+          <div style={{ color: '#475569', fontSize: 14, marginBottom: 24 }}>
+            {error.includes('8am') ? error : "Today's brief hasn't been generated yet. Come back after 8am ET."}
+          </div>
+          <div style={{ color: '#2d3f5a', fontSize: 12, fontFamily: 'var(--font-mono)' }}>
+            Vigil generates daily at 08:00 ET
+          </div>
+          <div style={{ marginTop: 40, borderTop: '1px solid #1a2744', paddingTop: 40 }}>
             <EmailSignup />
           </div>
         </div>
@@ -53,13 +85,34 @@ export default function Home() {
   if (!brief) return null
 
   return (
-    <div style={container}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
-        <ThreatLevelBanner level={brief.overall_threat_level} reason={brief.threat_level_reason} date={date} />
+    <div style={containerStyle}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+        <ThreatLevelBanner
+          level={brief.overall_threat_level}
+          reason={brief.threat_level_reason}
+          date={date}
+        />
 
-        <div style={{ background: '#060f06', border: '1px solid #0d2410', borderRadius: 4, padding: '16px 20px' }}>
-          <div style={{ fontSize: 10, color: '#1f4d1f', letterSpacing: '0.12em', fontFamily: 'var(--font-mono)', marginBottom: 10 }}>// OVERVIEW</div>
-          <p style={{ color: '#4d994d', fontSize: 13, lineHeight: 1.8 }}>{brief.summary}</p>
+        <div
+          style={{
+            background: '#0c1220',
+            border: '1px solid #1a2744',
+            borderRadius: 10,
+            padding: '20px 24px',
+          }}
+        >
+          <div
+            style={{
+              fontSize: 10,
+              color: '#475569',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              marginBottom: 10,
+            }}
+          >
+            Overview
+          </div>
+          <p style={{ color: '#94a3b8', fontSize: 14, lineHeight: 1.8 }}>{brief.summary}</p>
         </div>
 
         <CVESection cves={brief.cves} />

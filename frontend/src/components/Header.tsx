@@ -7,18 +7,15 @@ export default function Header() {
     <Link
       to={to}
       style={{
-        color: pathname === to ? '#00ff41' : '#1f4d1f',
-        fontSize: '12px',
-        fontWeight: pathname === to ? 700 : 400,
-        letterSpacing: '0.12em',
+        color: pathname === to ? '#4f9cf9' : '#94a3b8',
+        fontSize: '13px',
+        fontWeight: pathname === to ? 600 : 400,
+        letterSpacing: '0.05em',
         textDecoration: 'none',
         padding: '6px 12px',
-        borderRadius: '4px',
-        background: pathname === to ? '#00ff4110' : 'transparent',
-        border: `1px solid ${pathname === to ? '#00ff4130' : 'transparent'}`,
+        borderRadius: '6px',
+        background: pathname === to ? '#4f9cf910' : 'transparent',
         transition: 'all 0.15s',
-        fontFamily: 'var(--font-mono)',
-        textTransform: 'uppercase' as const,
       }}
     >
       {label}
@@ -28,9 +25,9 @@ export default function Header() {
   return (
     <header
       style={{
-        borderBottom: '1px solid #0d2410',
-        background: '#020b02ee',
-        backdropFilter: 'blur(8px)',
+        borderBottom: '1px solid #1a2744',
+        background: '#06081099',
+        backdropFilter: 'blur(12px)',
         position: 'sticky',
         top: 0,
         zIndex: 100,
@@ -47,61 +44,65 @@ export default function Header() {
           justifyContent: 'space-between',
         }}
       >
-        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 14 }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
-              <span
+        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ position: 'relative', width: 28, height: 28 }}>
+            <div
+              style={{
+                width: 28,
+                height: 28,
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, #4f9cf940 0%, transparent 70%)',
+                border: '1.5px solid #4f9cf9',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <div
                 style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontWeight: 900,
-                  fontSize: 20,
-                  letterSpacing: '0.3em',
-                  color: '#00ff41',
-                  textShadow: '0 0 20px #00ff4180',
-                  lineHeight: 1,
-                }}
-              >
-                VIGIL
-              </span>
-              <span
-                style={{
-                  display: 'inline-block',
-                  width: 10,
-                  height: 18,
-                  background: '#00ff41',
-                  marginLeft: 3,
-                  animation: 'blink 1s step-end infinite',
-                  boxShadow: '0 0 8px #00ff41',
-                  verticalAlign: 'middle',
+                  width: 8,
+                  height: 8,
+                  borderRadius: '50%',
+                  background: '#4f9cf9',
+                  boxShadow: '0 0 8px #4f9cf9',
                 }}
               />
             </div>
-            <div style={{ fontSize: 9, color: '#1f4d1f', letterSpacing: '0.15em', fontFamily: 'var(--font-mono)', marginTop: 2 }}>
-              // SECURITY INTELLIGENCE FEED
+          </div>
+          <div>
+            <div
+              style={{
+                fontWeight: 900,
+                fontSize: 18,
+                letterSpacing: '0.2em',
+                color: '#e2e8f0',
+                lineHeight: 1,
+              }}
+            >
+              VIGIL
+            </div>
+            <div style={{ fontSize: 9, color: '#475569', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+              Daily Security Brief
             </div>
           </div>
         </Link>
 
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
           {navLink('/', 'Today')}
           {navLink('/archive', 'Archive')}
           <a
             href="#subscribe"
             style={{
-              marginLeft: 4,
+              marginLeft: 8,
               padding: '6px 14px',
-              background: 'transparent',
-              border: '1px solid #00ff4150',
-              borderRadius: '4px',
-              color: '#00ff41',
-              fontSize: '11px',
-              fontWeight: 700,
+              background: '#4f9cf915',
+              border: '1px solid #4f9cf940',
+              borderRadius: '6px',
+              color: '#4f9cf9',
+              fontSize: '13px',
+              fontWeight: 600,
               textDecoration: 'none',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase' as const,
-              fontFamily: 'var(--font-mono)',
               transition: 'all 0.15s',
-              textShadow: '0 0 8px #00ff4160',
             }}
           >
             Subscribe

@@ -16,17 +16,37 @@ export default function ArchivePage() {
 
   return (
     <div style={{ maxWidth: 820, margin: '0 auto', padding: '40px 24px 80px' }}>
-      <div style={{ marginBottom: 28, fontFamily: 'var(--font-mono)' }}>
-        <div style={{ color: '#1f4d1f', fontSize: 11, marginBottom: 8 }}>$ vigil --list-archive</div>
-        <h1 style={{ fontSize: 18, fontWeight: 900, color: '#00ff41', letterSpacing: '0.1em', marginBottom: 4, textShadow: '0 0 12px #00ff4160' }}>
-          BRIEF_ARCHIVE
+      <div style={{ marginBottom: 32 }}>
+        <h1
+          style={{
+            fontSize: 22,
+            fontWeight: 800,
+            color: '#e2e8f0',
+            letterSpacing: '-0.02em',
+            marginBottom: 6,
+          }}
+        >
+          Brief Archive
         </h1>
-        <p style={{ color: '#4d994d', fontSize: 12 }}>// every daily brief, permanent record</p>
+        <p style={{ color: '#475569', fontSize: 13 }}>
+          Every daily brief, searchable and permanent.
+        </p>
       </div>
 
       {loading ? (
-        <div style={{ fontFamily: 'var(--font-mono)', color: '#1f4d1f', fontSize: 12 }}>
-          <span style={{ animation: 'blink 1s step-end infinite' }}>loading records...</span>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {[1, 2, 3, 4, 5].map(i => (
+            <div
+              key={i}
+              style={{
+                height: 52,
+                background: '#0c1220',
+                borderRadius: 10,
+                border: '1px solid #1a2744',
+                opacity: 0.4,
+              }}
+            />
+          ))}
         </div>
       ) : (
         <ArchiveList entries={entries} />
