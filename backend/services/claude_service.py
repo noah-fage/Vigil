@@ -111,18 +111,12 @@ Return ONLY valid JSON matching this exact schema (no markdown, no extra text):
 {BRIEF_SCHEMA}"""
 
     message = client.messages.create(
-        model="claude-opus-4-6",
+        model="claude-opus-4-5",
         max_tokens=8000,
-        thinking={"type": "enabled", "budget_tokens": 5000},
         messages=[{"role": "user", "content": prompt}],
     )
 
-    # Extract text from response (skip thinking blocks)
-    result_text = ""
-    for block in message.content:
-        if block.type == "text":
-            result_text = block.text
-            break
+    result_text = message.content[0].text
 
     # Strip any accidental markdown fences
     result_text = result_text.strip()
