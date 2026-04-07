@@ -25,82 +25,31 @@ export default function EmailSignup() {
     <section
       id="subscribe"
       style={{
-        background: 'linear-gradient(135deg, #0c1220 0%, #0f1729 100%)',
-        border: '1px solid #1a2744',
+        background: 'linear-gradient(135deg, #151311 0%, #1a1714 100%)',
+        border: '1px solid #2a2520',
         borderRadius: 14,
         padding: '40px 32px',
         textAlign: 'center',
       }}
     >
-      <div
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: 6,
-          background: '#4f9cf910',
-          border: '1px solid #4f9cf930',
-          borderRadius: 20,
-          padding: '4px 14px',
-          marginBottom: 20,
-        }}
-      >
-        <div
-          style={{
-            width: 6,
-            height: 6,
-            borderRadius: '50%',
-            background: '#22c55e',
-            boxShadow: '0 0 6px #22c55e',
-          }}
-        />
-        <span style={{ color: '#4f9cf9', fontSize: 11, fontWeight: 600, letterSpacing: '0.08em' }}>
-          FREE DAILY BRIEF
-        </span>
+      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: '#f59e0b10', border: '1px solid #f59e0b30', borderRadius: 20, padding: '4px 14px', marginBottom: 20 }}>
+        <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
+        <span style={{ color: '#f59e0b', fontSize: 11, fontWeight: 600, letterSpacing: '0.08em' }}>FREE DAILY BRIEF</span>
       </div>
 
-      <h2
-        style={{
-          fontSize: 26,
-          fontWeight: 800,
-          color: '#e2e8f0',
-          marginBottom: 10,
-          letterSpacing: '-0.02em',
-        }}
-      >
+      <h2 style={{ fontSize: 26, fontWeight: 800, color: '#f0ece6', marginBottom: 10, letterSpacing: '-0.02em' }}>
         Stay ahead of the threat.
       </h2>
-      <p style={{ color: '#64748b', fontSize: 14, marginBottom: 28, maxWidth: 460, margin: '0 auto 28px' }}>
+      <p style={{ color: '#5c5248', fontSize: 14, marginBottom: 28, maxWidth: 460, margin: '0 auto 28px' }}>
         Get today's CVEs, threat intel, and breach reports delivered to your inbox every morning at 8am ET - mapped to Security+ exam objectives.
       </p>
 
       {status === 'success' ? (
-        <div
-          style={{
-            background: '#22c55e10',
-            border: '1px solid #22c55e30',
-            borderRadius: 8,
-            padding: '14px 20px',
-            color: '#22c55e',
-            fontSize: 14,
-            fontWeight: 500,
-            maxWidth: 400,
-            margin: '0 auto',
-          }}
-        >
+        <div style={{ background: '#22c55e10', border: '1px solid #22c55e30', borderRadius: 8, padding: '14px 20px', color: '#22c55e', fontSize: 14, fontWeight: 500, maxWidth: 400, margin: '0 auto' }}>
           {message}
         </div>
       ) : (
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            display: 'flex',
-            gap: 10,
-            maxWidth: 420,
-            margin: '0 auto',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-          }}
-        >
+        <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 10, maxWidth: 420, margin: '0 auto', flexWrap: 'wrap' as const, justifyContent: 'center' }}>
           <input
             type="email"
             value={email}
@@ -108,33 +57,22 @@ export default function EmailSignup() {
             placeholder="your@email.com"
             required
             style={{
-              flex: 1,
-              minWidth: 220,
-              background: '#060810',
-              border: `1px solid ${status === 'error' ? '#ef444460' : '#1a2744'}`,
-              borderRadius: 8,
-              padding: '11px 16px',
-              color: '#e2e8f0',
-              fontSize: 14,
-              outline: 'none',
-              fontFamily: 'inherit',
+              flex: 1, minWidth: 220,
+              background: '#0d0c0b',
+              border: `1px solid ${status === 'error' ? '#ef444460' : '#2a2520'}`,
+              borderRadius: 8, padding: '11px 16px',
+              color: '#f0ece6', fontSize: 14, outline: 'none', fontFamily: 'inherit',
             }}
           />
           <button
             type="submit"
             disabled={status === 'loading'}
             style={{
-              background: status === 'loading' ? '#1a2744' : '#4f9cf9',
-              color: status === 'loading' ? '#475569' : '#fff',
-              border: 'none',
-              borderRadius: 8,
-              padding: '11px 24px',
-              fontSize: 14,
-              fontWeight: 600,
-              cursor: status === 'loading' ? 'not-allowed' : 'pointer',
-              fontFamily: 'inherit',
-              transition: 'all 0.15s',
-              whiteSpace: 'nowrap',
+              background: status === 'loading' ? '#2a2520' : '#f59e0b',
+              color: status === 'loading' ? '#5c5248' : '#0d0c0b',
+              border: 'none', borderRadius: 8, padding: '11px 24px',
+              fontSize: 14, fontWeight: 700, cursor: status === 'loading' ? 'not-allowed' : 'pointer',
+              fontFamily: 'inherit', transition: 'all 0.15s', whiteSpace: 'nowrap' as const,
             }}
           >
             {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
@@ -142,13 +80,8 @@ export default function EmailSignup() {
         </form>
       )}
 
-      {status === 'error' && (
-        <div style={{ color: '#ef4444', fontSize: 12, marginTop: 10 }}>{message}</div>
-      )}
-
-      <p style={{ color: '#2d3f5a', fontSize: 11, marginTop: 16 }}>
-        No spam. Unsubscribe anytime.
-      </p>
+      {status === 'error' && <div style={{ color: '#ef4444', fontSize: 12, marginTop: 10 }}>{message}</div>}
+      <p style={{ color: '#5c5248', fontSize: 11, marginTop: 16 }}>No spam. Unsubscribe anytime.</p>
     </section>
   )
 }

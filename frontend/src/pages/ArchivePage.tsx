@@ -21,14 +21,14 @@ export default function ArchivePage() {
           style={{
             fontSize: 22,
             fontWeight: 800,
-            color: '#e2e8f0',
+            color: '#f0ece6',
             letterSpacing: '-0.02em',
             marginBottom: 6,
           }}
         >
           Brief Archive
         </h1>
-        <p style={{ color: '#475569', fontSize: 13 }}>
+        <p style={{ color: '#5c5248', fontSize: 13 }}>
           Every daily brief, searchable and permanent.
         </p>
       </div>
@@ -40,9 +40,9 @@ export default function ArchivePage() {
               key={i}
               style={{
                 height: 52,
-                background: '#0c1220',
+                background: '#151311',
                 borderRadius: 10,
-                border: '1px solid #1a2744',
+                border: '1px solid #2a2520',
                 opacity: 0.4,
               }}
             />

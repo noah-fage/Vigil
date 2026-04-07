@@ -7,14 +7,14 @@ export default function Header() {
     <Link
       to={to}
       style={{
-        color: pathname === to ? '#4f9cf9' : '#94a3b8',
+        color: pathname === to ? '#f59e0b' : '#a89880',
         fontSize: '13px',
         fontWeight: pathname === to ? 600 : 400,
         letterSpacing: '0.05em',
         textDecoration: 'none',
         padding: '6px 12px',
         borderRadius: '6px',
-        background: pathname === to ? '#4f9cf910' : 'transparent',
+        background: pathname === to ? '#f59e0b10' : 'transparent',
         transition: 'all 0.15s',
       }}
     >
@@ -25,8 +25,8 @@ export default function Header() {
   return (
     <header
       style={{
-        borderBottom: '1px solid #1a2744',
-        background: '#06081099',
+        borderBottom: '1px solid #2a2520',
+        background: '#0d0c0bcc',
         backdropFilter: 'blur(12px)',
         position: 'sticky',
         top: 0,
@@ -44,44 +44,40 @@ export default function Header() {
           justifyContent: 'space-between',
         }}
       >
-        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ position: 'relative', width: 28, height: 28 }}>
-            <div
-              style={{
-                width: 28,
-                height: 28,
-                borderRadius: '50%',
-                background: 'radial-gradient(circle, #4f9cf940 0%, transparent 70%)',
-                border: '1.5px solid #4f9cf9',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <div
-                style={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: '50%',
-                  background: '#4f9cf9',
-                  boxShadow: '0 0 8px #4f9cf9',
-                }}
+        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div
+            style={{
+              width: 28,
+              height: 28,
+              position: 'relative',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+              <polygon
+                points="13,2 24,20 2,20"
+                stroke="#f59e0b"
+                strokeWidth="1.5"
+                fill="#f59e0b10"
               />
-            </div>
+              <circle cx="13" cy="14" r="2.5" fill="#f59e0b" />
+            </svg>
           </div>
           <div>
             <div
               style={{
                 fontWeight: 900,
-                fontSize: 18,
-                letterSpacing: '0.2em',
-                color: '#e2e8f0',
+                fontSize: 17,
+                letterSpacing: '0.25em',
+                color: '#f0ece6',
                 lineHeight: 1,
               }}
             >
               VIGIL
             </div>
-            <div style={{ fontSize: 9, color: '#475569', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+            <div style={{ fontSize: 9, color: '#5c5248', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
               Daily Security Brief
             </div>
           </div>
@@ -95,10 +91,10 @@ export default function Header() {
             style={{
               marginLeft: 8,
               padding: '6px 14px',
-              background: '#4f9cf915',
-              border: '1px solid #4f9cf940',
+              background: '#f59e0b15',
+              border: '1px solid #f59e0b40',
               borderRadius: '6px',
-              color: '#4f9cf9',
+              color: '#f59e0b',
               fontSize: '13px',
               fontWeight: 600,
               textDecoration: 'none',
