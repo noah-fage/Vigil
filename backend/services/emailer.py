@@ -86,7 +86,7 @@ def build_email_html(brief: dict, subscriber_email: str) -> str:
             </div>
         </div>"""
 
-    unsubscribe_url = f"https://your-vigil-backend.onrender.com/api/unsubscribe?email={subscriber_email}"
+    unsubscribe_url = f"https://vigil-szs8.onrender.com/api/unsubscribe?email={subscriber_email}"
 
     return f"""<!DOCTYPE html>
 <html>
